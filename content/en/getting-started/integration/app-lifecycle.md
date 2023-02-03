@@ -61,7 +61,7 @@ Deploy the subscription add-on in corresponding managed cluster namespace on the
 
 ```Shell
 $ kubectl config use-context ${CTX_HUB_CLUSTER}
-$ clusteradm addon enable --name application-manager --cluster ${MANAGED_CLUSTER_NAME}
+$ clusteradm addon enable --names application-manager --clusters ${MANAGED_CLUSTER_NAME}
 Deploying application-manager add-on to managed cluster: <managed_cluster_name>.
 $ kubectl -n ${MANAGED_CLUSTER_NAME} get managedclusteraddon # kubectl -n cluster1 get managedclusteraddon
 NAME                  AVAILABLE   DEGRADED   PROGRESSING
@@ -139,3 +139,9 @@ NAME                                                   READY   STATUS      RESTA
 nginx-ingress-47f79-controller-6f495bb5f9-lpv7z        1/1     Running     0          108m
 nginx-ingress-47f79-default-backend-7559599b64-rhwgm   1/1     Running     0          108m
 ```
+
+### Try this out
+
+Let [VScode Extension](/developer-guides/vscode-extension) help you out!
+
+Create a Bootstrap Project specifically tailored to your channel type, with all the Custom Resource (CR) templates you will need already auto-generated to get you started!

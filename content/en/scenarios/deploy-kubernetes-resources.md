@@ -34,7 +34,7 @@ Connect to your hub cluster and you have 2 options to create a `ManifestWork`:
 1) use `clusteradm` command
 
 ```shell
-clusteradm create work my-first-work -f <kubernetes yaml file or directory> --cluster <cluster name>
+clusteradm create work my-first-work -f <kubernetes yaml file or directory> --clusters <cluster name>
 ```
 
 where kubernetes yaml file should be kubernetes definitions, a sample:
@@ -126,7 +126,7 @@ clusteradm get works my-first-work --cluster <cluster name>
 If you have some change on the manifest files, you can apply the change to the targeted cluster by running:
 
 ```shell
-clusteradm create work my-first-work -f <kubernetes yaml file or directory> --cluster <cluster name> --overwrite
+clusteradm create work my-first-work -f <kubernetes yaml file or directory> --clusters <cluster name> --overwrite
 ```
 
 To remove the resources deployed on the targeted cluster, run:
@@ -182,8 +182,26 @@ In this example:
 
 - A `ManifestWork` named "example-manifestwork" will be created into a 
   "cluster namespace" named "cluster1".
+
+  ```shell
+  # kubectl get manifestwork -A --context kind-hub
+  NAMESPACE   NAME            AGE
+  cluster1    my-first-work   2m59s
+  ```
+
 - The resources in the `ManifestWork` including a service-account, a deployment
   will be created to the cluster "cluster1".
+
+  ```shell
+  # kubectl get deployment --context kind-cluster1
+  NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+  nginx-deployment   3/3     3            3           4m10s
+
+  # kubectl get sa my-sa --context kind-cluster1
+  NAME    SECRETS   AGE
+  my-sa   1         4m23s
+  ```
+
 - In the status of `ManifestWork` we can check out the aggregated status 
   indicating whether the prescribed resources are successfully deployed by the
   conditions in the field `.status.conditions[*]`:

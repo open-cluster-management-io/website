@@ -22,15 +22,43 @@ You must meet the following prerequisites to install the policy controllers:
   the source.
 
 - Ensure the `open-cluster-management` _policy framework_ is installed. See
-  [Policy Framework](../policy-framework) for more information.
+  [Policy Framework](/getting-started/integration/policy-framework) for more information.
 
-## Install the configuration policy controller
+## Install the configuration policy controller to the managed cluster(s)
 
-Complete the following procedure to install the configuration policy controller:
+### Deploy via Clusteradm CLI
+
+Ensure `clusteradm` CLI is installed and is newer than v0.3.0. Download and extract the
+[clusteradm binary](https://github.com/open-cluster-management-io/clusteradm/releases/latest). For
+more details see the
+[clusteradm GitHub page](https://github.com/open-cluster-management-io/clusteradm/blob/main/README.md#quick-start).
+
+1. Deploy the configuration policy controller to the managed cluster(s) (this command is the same
+   for a self-managed hub):
+
+   ```Shell
+   # Deploy the configuration policy controller
+   clusteradm addon enable addon --names config-policy-controller --clusters <cluster_name> --context ${CTX_HUB_CLUSTER}
+   ```
+
+2. Ensure the pod is running on the managed cluster with the following command:
+
+   ```Shell
+   $ kubectl get pods -n open-cluster-management-agent-addon
+   NAME                                               READY   STATUS    RESTARTS   AGE
+   config-policy-controller-7f8fb64d8c-pmfx4          1/1     Running   0          44s
+   ```
+
+### Deploy from source
 
 1. Deploy the `config-policy-controller` to the managed cluster with the following commands:
 
    ```Shell
+   # The context name of the clusters in your kubeconfig
+   # If the clusters are created by KinD, then the context name will the follow the pattern "kind-<cluster name>".
+   export CTX_HUB_CLUSTER=<your hub cluster context>           # export CTX_HUB_CLUSTER=kind-hub
+   export CTX_MANAGED_CLUSTER=<your managed cluster context>   # export CTX_MANAGED_CLUSTER=kind-cluster1
+
    # Configure kubectl to point to the managed cluster
    kubectl config use-context ${CTX_MANAGED_CLUSTER}
 
@@ -40,8 +68,11 @@ Complete the following procedure to install the configuration policy controller:
 
    # Apply the CRD
    export COMPONENT="config-policy-controller"
-   export GIT_PATH="https://raw.githubusercontent.com/open-cluster-management-io/${COMPONENT}/main/deploy"
+   export GIT_PATH="https://raw.githubusercontent.com/open-cluster-management-io/${COMPONENT}/v0.9.0/deploy"
    kubectl apply -f ${GIT_PATH}/crds/policy.open-cluster-management.io_configurationpolicies.yaml
+
+   # Set the managed cluster name
+   export MANAGED_CLUSTER_NAME=<your managed cluster name>  # export MANAGED_CLUSTER_NAME=cluster1
 
    # Deploy the controller
    kubectl apply -f ${GIT_PATH}/operator.yaml -n ${MANAGED_NAMESPACE}
@@ -57,9 +88,7 @@ Complete the following procedure to install the configuration policy controller:
    ```Shell
    $ kubectl get pods -n ${MANAGED_NAMESPACE}
    NAME                                               READY   STATUS    RESTARTS   AGE
-   ...
    config-policy-controller-7f8fb64d8c-pmfx4          1/1     Running   0          44s
-   ...
    ```
 
 ## What is next
@@ -70,6 +99,9 @@ Application management's `PlacementRule` support you can use either placement im
 Perform the steps in the **Placement API** or the **Placement Rule API** section based on which
 placement API you desire to use.
 
+For more information on how to use a `ConfigurationPolicy`, read the
+[`Policy` API concept section](/getting-started/integration/policy-framework#policy).
+
 ### Placement API
 
 1. Run the following command to create a policy on the hub that uses `Placement`:
@@ -79,7 +111,7 @@ placement API you desire to use.
    kubectl config use-context ${CTX_HUB_CLUSTER}
 
    # Apply the example policy and placement
-   kubectl apply -n default -f https://raw.githubusercontent.com/gparvin/my-policies/main/policies/placement/policy-pod.yaml
+   kubectl apply -n default -f https://raw.githubusercontent.com/stolostron/policy-collection/main/community/CM-Configuration-Management/policy-pod-placement.yaml
    ```
 
 2. Update the `Placement` to distribute the policy to the managed cluster with the following command
@@ -91,7 +123,7 @@ placement API you desire to use.
 
 3. Make sure the `default` namespace has a `ManagedClusterSetBinding` for a `ManagedClusterSet` with
    at least one managed cluster resource in the `ManagedClusterSet`. See
-   [Bind ManagedClusterSet to a namespace](../../../concepts/managedclusterset#bind-managedclusterset-to-a-namespace)
+   [Bind ManagedClusterSet to a namespace](/concepts/managedclusterset#bind-managedclusterset-to-a-namespace)
    for more information on this.
 
 4. To confirm that the managed cluster is selected by the `Placement`, run the following command:
@@ -172,9 +204,3 @@ that a placement method has been selected between `Placement` or `PlacementRule`
    NAME               READY   STATUS    RESTARTS   AGE
    sample-nginx-pod   1/1     Running   0          23s
    ```
-
-## More policies
-
-You can find more policies or contribute to the open policy repository,
-[policy-collection](https://github.com/open-cluster-management/policy-collection). Note that these
-policies all use the Application management `PlacementRule` API.

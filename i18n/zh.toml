@@ -16,6 +16,9 @@ other = "是一个由开源社区驱动的混合云多集群管理平台。在�
 [subject_getting_started]
 other = "开始"
 
+[subject_join_our_slack]
+other = "加入我们的Slack"
+
 [feature_overview]
 other = "功能概览"
 
@@ -76,6 +79,9 @@ other = "架构"
 [sidebar_managed_cluster]
 other = "托管集群"
 
+[sidebar_cluster_claim]
+other = "集群声明"
+
 [ sidebar_managed_cluster_set ]
 other = "托管集群分组"
 
@@ -88,6 +94,9 @@ other = "匹配路由"
 [sidebar_addons]
 other = "自定义插件"
 
+[sidebar_policy]
+other = "Policy"
+
 [sidebar_getting_started]
 other = "安装"
 
@@ -96,6 +105,13 @@ other = "快速开始"
 
 [sidebar_core_components]
 other = "核心组件"
+
+[sidebar_developer-guides]
+other = "开发指南"
+
+[sidebar_addon-developer-guide]
+other = "Add-on 开发指南"
+
 
 [sidebar_cluster_manager]
 other = "中枢控制器"
@@ -133,8 +149,17 @@ other = "应用场景"
 [sidebar_deploy_kubernetes_resources]
 other = "部署Kubernetes资源"
 
+[sidebar_distribute_workload_with_placement]
+other = "通过placement分发工作负载"
+
+[sidebar_extend_multicluster_scheduling_capabilities]
+other = "扩展多集群调度能力"
+
 [sidebar_extend_managed_clusters]
 other = "扩展集群模型"
+
+[sidebar_integration_with_argocd]
+other = "集成Argo CD"
 
 [sidebar_push_kube_api_requests]
 other = "向托管集群推送Kube API请求"

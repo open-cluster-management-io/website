@@ -16,6 +16,9 @@ other = "is a community-driven project focused on multicluster and multicloud sc
 [subject_getting_started]
 other = "Get Started"
 
+[subject_join_our_slack]
+other = "Join our Slack"
+
 [feature_overview]
 other = "Feature Overview"
 
@@ -76,6 +79,9 @@ other = "Architecture"
 [sidebar_managed_cluster]
 other = "ManagedCluster"
 
+[sidebar_cluster_claim]
+other = "ClusterClaim"
+
 [ sidebar_managed_cluster_set ]
 other = "ManagedClusterSet"
 
@@ -87,6 +93,9 @@ other = "Placement"
 
 [sidebar_addons]
 other = "Add-ons"
+
+[sidebar_policy]
+other = "Policy"
 
 [sidebar_getting_started]
 other = "Getting Started"
@@ -105,6 +114,12 @@ other = "Klusterlet Agent"
 
 [sidebar_integrations]
 other = "Add-ons and Integrations"
+
+[sidebar_developer-guides]
+other = "Developer Guides"
+
+[sidebar_addon-developer-guide]
+other = "Add-on Developer Guide"
 
 [sidebar_administration]
 other = "Administration"
@@ -127,14 +142,26 @@ other = "Cluster proxy"
 [sidebar_managed_serviceaccount]
 other = "Managed service account"
 
+[sidebar_vscode_extension]
+other = "VScode Extension"
+
 [sidebar_scenarios]
 other = "Scenarios"
 
 [sidebar_deploy_kubernetes_resources]
 other = "Deploy Kubernetes Resources"
 
+[sidebar_distribute_workload_with_placement]
+other = "Distribute Workload With Placement"
+
+[sidebar_extend_multicluster_scheduling_capabilities]
+other = "Extend Multicluster Scheduling Capabilities"
+
 [sidebar_extend_managed_clusters]
 other = "Extend Managed Clusters"
+
+[sidebar_integration_with_argocd]
+other = "Integration with Argo CD"
 
 [sidebar_push_kube_api_requests]
 other = "Pushing Kube API Requests to the Managed Clusters"

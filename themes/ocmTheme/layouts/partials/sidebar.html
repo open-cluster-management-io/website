@@ -19,6 +19,9 @@
                     <a class="navlink" href="{{ $rootPath }}/concepts/architecture">{{ i18n "sidebar_architecture" }}</a>
                 </li>
                 <li>
+                    <a class="navlink" href="{{ $rootPath }}/concepts/clusterclaim">{{ i18n "sidebar_cluster_claim" }}</a>
+                </li>
+                <li>
                     <a class="navlink" href="{{ $rootPath }}/concepts/managedcluster">{{ i18n "sidebar_managed_cluster" }}</a>
                 </li>
                 <li>
@@ -32,6 +35,9 @@
                 </li>
                 <li>
                     <a class="navlink" href="{{ $rootPath }}/concepts/addon">{{ i18n "sidebar_addons" }}</a>
+                </li>
+                <li>
+                    <a class="navlink" href="{{ $rootPath }}/concepts/policy">{{ i18n "sidebar_policy" }}</a>
                 </li>
             </ul>
         </li>
@@ -82,6 +88,17 @@
                 </li>
             </ul>
         </li>
+        <li id="developer-guides">
+            <a class="navlink" href="{{ $rootPath }}/developer-guides">{{ i18n "sidebar_developer-guides" }}</a>
+            <ul class="collapse">
+                <li>
+                    <a class="navlink" href="{{ $rootPath }}/developer-guides/addon">{{ i18n "sidebar_addon-developer-guide" }}</a>
+                </li>
+                <li>
+                    <a class="navlink" href="{{ $rootPath }}/developer-guides/vscode-extension">{{ i18n "sidebar_vscode_extension" }}</a>
+                </li>
+            </ul>
+        </li>
         <li id="scenarios">
             <a class="navlink" href="{{ $rootPath }}/scenarios">{{ i18n "sidebar_scenarios" }}</a>
             <ul class="collapse">
@@ -89,8 +106,17 @@
                     <a class="navlink" href="{{ $rootPath }}/scenarios/deploy-kubernetes-resources">{{ i18n "sidebar_deploy_kubernetes_resources" }}</a>
                 </li>
                 <li>
+                    <a class="navlink" href="{{ $rootPath }}/scenarios/distribute-workload-with-placement">{{ i18n "sidebar_distribute_workload_with_placement" }}</a>
+                </li>
+                <li>
+                    <a class="navlink" href="{{ $rootPath }}/scenarios/extend-multicluster-scheduling-capabilities">{{ i18n "sidebar_extend_multicluster_scheduling_capabilities" }}</a>
+                </li>
+                <li>
                     <a class="navlink" href="{{ $rootPath }}/scenarios/extending-managed-clusters">{{ i18n "sidebar_extend_managed_clusters" }}</a>
                 </li>
+                <li>
+                    <a class="navlink" href="{{ $rootPath }}/scenarios/integration-with-argocd">{{ i18n "sidebar_integration_with_argocd" }}</a>
+                </li>                
                 <li>
                     <a class="navlink" href="{{ $rootPath }}/scenarios/pushing-kube-api-requests">{{ i18n "sidebar_push_kube_api_requests" }}</a>
                 </li>
@@ -120,10 +146,10 @@
             <a class="navlink resource" href="https://github.com/open-cluster-management-io" target="_blank"><i class="bi bi-github"></i><span style="padding-left: 10px;">GitHub</span></a>
         </li>
         <li>
-            <a class="navlink resource" href="https://kubernetes.slack.com/archives/C01GE7YSUUF" target="_blank"><i class="bi bi-slack"></i><span style="padding-left: 10px;">Slack</span></a>
+            <a class="navlink resource" href="https://kubernetes.slack.com/channels/open-cluster-mgmt" target="_blank"><i class="bi bi-slack"></i><span style="padding-left: 10px;">Slack</span></a>
         </li>
         <li>
-            <a class="navlink resource" href="https://www.youtube.com/channel/UC7xxOh2jBM5Jfwt3fsBzOZw" target="_blank"><i class="bi bi-youtube"></i><span style="padding-left: 10px;">YouTube</span></a>
+            <a class="navlink resource" href="https://www.youtube.com/c/OpenClusterManagement" target="_blank"><i class="bi bi-youtube"></i><span style="padding-left: 10px;">YouTube</span></a>
         </li>
         <li>
             <a class="navlink resource" href="https://groups.google.com/g/open-cluster-management" target="_blank"><i class="bi bi-envelope-fill"></i><span style="padding-left: 10px;">Mailing group</span></a>
